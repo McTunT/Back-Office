@@ -10,8 +10,8 @@ import {
   FormControl,
   MenuItem
 } from "@material-ui/core";
-
 import Branch from "./Branch";
+
 const buySell = [
   {
     value: "Buy",
@@ -45,10 +45,10 @@ class Product extends React.Component {
   state = {
     buysell: " ",
     number: 1,
-    package: " ",
+    package: 0,
     price: 0,
-    premier: " ",
-    totalprice: " ",
+    premier: 0,
+    totalprice: 0,
     getgold: " ",
     sellthrough: " "
   };
@@ -61,6 +61,7 @@ class Product extends React.Component {
 
   render() {
     const { classes } = this.props;
+    const total = this.state.number * this.state.price;
 
     return (
       <React.Fragment>
@@ -141,11 +142,12 @@ class Product extends React.Component {
                   type="number"
                   margin="dense"
                   label="ราคารวม"
-                  value={this.state.totalprice}
+                  value={total}
                   onChange={this.handleChange("totalprice")}
                   startAdornment={
                     <InputAdornment position="start">฿</InputAdornment>
                   }
+                  fullWidth
                 />
               </FormControl>
             </Grid>

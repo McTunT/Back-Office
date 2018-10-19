@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
-import FormRetail from "./Components/FormRetail";
-import Calculaor from "./Comtest/Calculator";
-import Routers from "./Comtest/Routers";
+//import RouterProps from "./ComponentsTest/RoutersProps";
+//import ListItemTest from "./ComponentsTest/ListItemTest";
+import TakeOrder from "./Components/Takeorder/TakeOrder";
+//import ListItemLink from "./Components/Drawers/ListItemLink";
+
 class App extends Component {
   render() {
     return (
       <div>
-        <FormRetail />
-        <Routers />
-        <Calculaor />
+        <TakeOrder />
       </div>
     );
   }

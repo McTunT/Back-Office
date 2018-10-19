@@ -23,15 +23,13 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import styled from "styled-components";
-import CustomerInfo from "./Retail/CustomerInfo";
-import Product from "./Retail/Product";
-import Finance from "./Retail/Finance";
-import Review from "./Retail/Review";
+import CustomerInfo from "../Retail/CustomerInfo";
+import Product from "../Retail/Product";
+import Finance from "../Retail/Finance";
+import Review from "../Retail/Review";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import ListItemLink from "../Drawers/ListItemLink";
 
 const NextBody = styled.body`
   margin: auto;
@@ -252,22 +250,7 @@ class TakeOrder extends React.Component {
               </IconButton>
             </div>
             <Divider />
-            <List>
-              <div>
-                <ListItem button>
-                  <ListItemIcon>
-                    <DashboardIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Dashboard" />
-                </ListItem>
-                <ListItem button>
-                  <ListItemIcon>
-                    <AccountBoxIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Customer" />
-                </ListItem>
-              </div>
-            </List>
+            <ListItemLink />
           </Drawer>
           <main className={classes.layout}>
             <Paper className={classes.paper}>
@@ -339,12 +322,6 @@ class TakeOrder extends React.Component {
                           : "ถัดไป"}
                       </Button>
                     </div>
-                    <Router>
-                      <div>
-                        <Route exact path="/" />
-                        <Route path="/about" />
-                      </div>
-                    </Router>
                   </React.Fragment>
                 )}
               </React.Fragment>
