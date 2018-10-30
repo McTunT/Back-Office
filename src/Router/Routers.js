@@ -1,21 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
-import {
-  Drawer,
-  List,
-  Divider,
-  IconButton,
-  ListItem,
-  ListItemIcon,
-  ListItemText
-} from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import { Router, Route, Link, Switch } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import createBrowserHistory from "history/createBrowserHistory";
 import Table from "../Components/Customer/Table";
 import TakeOrder from "../Components/Retail/TakeOrder";
@@ -82,7 +71,7 @@ class Routers extends Component {
   };
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     return (
       <div>
         <Router history={history}>

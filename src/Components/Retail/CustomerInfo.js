@@ -93,6 +93,7 @@ class CustomerInfo extends Component {
                 InputLabelProps={{
                   shrink: true
                 }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -108,6 +109,7 @@ class CustomerInfo extends Component {
                 InputLabelProps={{
                   shrink: true
                 }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={6} md={6}>
@@ -119,6 +121,7 @@ class CustomerInfo extends Component {
                 InputLabelProps={{
                   shrink: true
                 }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={6} md={4}>
@@ -131,6 +134,7 @@ class CustomerInfo extends Component {
                 }}
                 fullWidth
                 margin="normal"
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={6} md={4}>
@@ -143,6 +147,7 @@ class CustomerInfo extends Component {
                 }}
                 fullWidth
                 margin="normal"
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={6} md={4}>
@@ -155,6 +160,7 @@ class CustomerInfo extends Component {
                 }}
                 fullWidth
                 margin="normal"
+                variant="outlined"
               />
             </Grid>
 
@@ -170,6 +176,7 @@ class CustomerInfo extends Component {
                 }}
                 margin="normal"
                 fullWidth
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={6}>
@@ -184,6 +191,7 @@ class CustomerInfo extends Component {
                 InputLabelProps={{
                   shrink: true
                 }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12}>
@@ -195,6 +203,7 @@ class CustomerInfo extends Component {
                 InputLabelProps={{
                   shrink: true
                 }}
+                variant="outlined"
               />
             </Grid>
           </Grid>

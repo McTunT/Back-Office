@@ -231,7 +231,7 @@ const components = {
 
 class ReactSelect extends React.Component {
   state = {
-    single: null
+    single: ""
   };
 
   handleChange = name => value => {

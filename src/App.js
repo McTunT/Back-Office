@@ -7,6 +7,9 @@ import "./App.css";
 //import TakeOrder from "./Components/Retail/TakeOrder";
 import Header from "./Components/Header/Header";
 //import Routers from "./Router/Routers";
+//import Login from "./Components/Login/Login";
+//import Calculator from "../src/ComponentsTest/Calculator";
+
 class App extends Component {
   render() {
     return (
@@ -16,4 +19,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;

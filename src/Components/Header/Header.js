@@ -98,7 +98,7 @@ const styles = theme => ({
 
 const history = createBrowserHistory();
 
-class MiniDrawer extends React.Component {
+class Header extends React.Component {
   state = {
     open: false
   };
@@ -142,7 +142,7 @@ class MiniDrawer extends React.Component {
                 noWrap
                 className={classes.grow}
               >
-                Back
+                Back Office
               </Typography>
               <Button color="inherit" variant="outlined">
                 Logout
@@ -195,9 +195,9 @@ class MiniDrawer extends React.Component {
   }
 }
 
-MiniDrawer.propTypes = {
+Header.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(MiniDrawer);
+export default withStyles(styles, { withTheme: true })(Header);

@@ -44,6 +44,7 @@ class Finance extends React.Component {
               InputLabelProps={{
                 shrink: true
               }}
+              variant="outlined"
             />
           </Grid>
           <Grid item sm={12} md={6}>
@@ -56,6 +57,7 @@ class Finance extends React.Component {
               }}
               fullWidth
               margin="normal"
+              variant="outlined"
             />{" "}
           </Grid>
           <Grid item sm={12} md={6}>
@@ -65,6 +67,7 @@ class Finance extends React.Component {
               value={this.state.payBy}
               fullWidth
               margin="normal"
+              variant="outlined"
               onChange={this.handleChange("payBy")}
             >
               {payBy.map(option => (
@@ -81,6 +84,7 @@ class Finance extends React.Component {
               value={this.state.listBank}
               fullWidth
               margin="normal"
+              variant="outlined"
               onChange={this.handleChange("listBank")}
             >
               {listBank.map(option => (

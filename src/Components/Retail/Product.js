@@ -1,15 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import {
-  Grid,
-  TextField,
-  Input,
-  InputLabel,
-  InputAdornment,
-  FormControl,
-  MenuItem
-} from "@material-ui/core";
+import { Grid, TextField, InputAdornment, MenuItem } from "@material-ui/core";
 import Branch from "./Branch";
 
 const buySell = [
@@ -61,7 +53,7 @@ class Product extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const total = this.state.number * this.state.price;
+    const total = this.state.price * this.state.number + this.state.premier / 1;
 
     return (
       <React.Fragment>
@@ -77,7 +69,8 @@ class Product extends React.Component {
                 value={this.state.buysell}
                 onChange={this.handleChange("buysell")}
                 fullWidth
-                margin="dense"
+                margin="normal"
+                variant="outlined"
               >
                 {buySell.map(option => (
                   <MenuItem key={option.value} value={option.value}>
@@ -93,8 +86,9 @@ class Product extends React.Component {
                 label="จำนวน"
                 value={this.state.number}
                 onChange={this.handleChange("number")}
-                margin="dense"
+                margin="normal"
                 fullWidth
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={4}>
@@ -104,24 +98,27 @@ class Product extends React.Component {
                 label="แพ็กเกจ"
                 value={this.state.package}
                 onChange={this.handleChange("package")}
-                margin="dense"
+                margin="normal"
                 fullWidth
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={4}>
-              <FormControl fullWidth margin="normal">
-                <InputLabel htmlFor="adornment-amount">ราคาต่อหน่วย</InputLabel>
-                <Input
-                  id="price"
-                  type="number"
-                  margin="dense"
-                  value={this.state.price}
-                  onChange={this.handleChange("price")}
-                  startAdornment={
-                    <InputAdornment position="start">฿</InputAdornment>
-                  }
-                />
-              </FormControl>
+              <TextField
+                id="price"
+                label="ราคาต่อหน่วย"
+                margin="normal"
+                type="number"
+                value={this.state.price}
+                onChange={this.handleChange("price")}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  )
+                }}
+                fullWidth
+                variant="outlined"
+              />
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
@@ -130,26 +127,26 @@ class Product extends React.Component {
                 label="พรีเมียร์"
                 value={this.state.premier}
                 onChange={this.handleChange("premier")}
-                margin="dense"
+                margin="normal"
                 fullWidth
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={12} md={4}>
-              <FormControl fullWidth margin="normal">
-                <InputLabel htmlFor="adornment-amount">ราคารวม</InputLabel>
-                <Input
-                  id="totalprice"
-                  type="number"
-                  margin="dense"
-                  label="ราคารวม"
-                  value={total}
-                  onChange={this.handleChange("totalprice")}
-                  startAdornment={
-                    <InputAdornment position="start">฿</InputAdornment>
-                  }
-                  fullWidth
-                />
-              </FormControl>
+              <TextField
+                id="totalprice"
+                label="ราคารวม"
+                margin="normal"
+                value={total}
+                onChange={this.handleChange("totalprice")}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  )
+                }}
+                fullWidth
+                variant="outlined"
+              />
             </Grid>
             <Grid item xs={12} md={4}>
               <TextField
@@ -158,7 +155,8 @@ class Product extends React.Component {
                 value={this.state.getgold}
                 onChange={this.handleChange("getgold")}
                 fullWidth
-                margin="dense"
+                margin="normal"
+                variant="outlined"
               >
                 {getGold.map(option => (
                   <MenuItem key={option.value} value={option.value}>
@@ -172,10 +170,11 @@ class Product extends React.Component {
                 id="sellthrough"
                 label="ขายผ่าน"
                 fullWidth
-                margin="dense"
+                margin="normal"
                 InputLabelProps={{
                   shrink: true
                 }}
+                variant="outlined"
               />
             </Grid>
             <Grid item xs={6} md={4}>
@@ -187,7 +186,8 @@ class Product extends React.Component {
                   shrink: true
                 }}
                 fullWidth
-                margin="dense"
+                margin="normal"
+                variant="outlined"
               />
             </Grid>
           </Grid>

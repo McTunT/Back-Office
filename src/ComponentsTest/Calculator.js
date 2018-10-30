@@ -6,11 +6,12 @@ class Tototal extends React.Component {
     this.state = {
       number: 0,
       price: 0,
+      num2: 0,
       total: 0
     };
     this.handleNumberChange = this.handleNumberChange.bind(this);
     this.handlePriceChange = this.handlePriceChange.bind(this);
-    //this.handleTotalChange = this.handleTotalChange.bind(this);
+    this.handleNum2Change = this.handleNum2Change.bind(this);
   }
 
   handleNumberChange(event) {
@@ -19,6 +20,10 @@ class Tototal extends React.Component {
 
   handlePriceChange(event) {
     this.setState({ price: event.target.value });
+  }
+
+  handleNum2Change(event) {
+    this.setState({ num2: event.target.value });
   }
 
   render() {
@@ -34,6 +39,11 @@ class Tototal extends React.Component {
           type="number"
           value={this.state.price}
           onChangeCapture={this.handlePriceChange}
+        />
+        <input
+          type="number"
+          value={this.state.num2}
+          onChangeCapture={this.handleNum2Change}
         />
         <input type="text" value={total} />
       </div>

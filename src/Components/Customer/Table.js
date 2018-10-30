@@ -2,30 +2,53 @@ import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
-import TableRow from "@material-ui/core/TableRow";
-import TableSortLabel from "@material-ui/core/TableSortLabel";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
-import Checkbox from "@material-ui/core/Checkbox";
-import IconButton from "@material-ui/core/IconButton";
-import Tooltip from "@material-ui/core/Tooltip";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel,
+  Toolbar,
+  Typography,
+  Paper,
+  Checkbox,
+  IconButton,
+  Tooltip
+} from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import { lighten } from "@material-ui/core/styles/colorManipulator";
 
 let counter = 0;
-function createData(name, calories, fat, carbs, protein) {
+const createData = (
+  orderno,
+  name,
+  orderdate,
+  products,
+  unit,
+  amount,
+  a,
+  b,
+  c
+) => {
   counter += 1;
-  return { id: counter, name, calories, fat, carbs, protein };
-}
+  return {
+    id: counter,
+    orderno,
+    name,
+    orderdate,
+    products,
+    unit,
+    amount,
+    a,
+    b,
+    c
+  };
+};
 
-function desc(a, b, orderBy) {
+const desc = (a, b, orderBy) => {
   if (b[orderBy] < a[orderBy]) {
     return -1;
   }
@@ -33,9 +56,9 @@ function desc(a, b, orderBy) {
     return 1;
   }
   return 0;
-}
+};
 
-function stableSort(array, cmp) {
+const stableSort = (array, cmp) => {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = cmp(a[0], b[0]);
@@ -43,25 +66,34 @@ function stableSort(array, cmp) {
     return a[1] - b[1];
   });
   return stabilizedThis.map(el => el[0]);
-}
+};
 
-function getSorting(order, orderBy) {
+const getSorting = (order, orderBy) => {
   return order === "desc"
     ? (a, b) => desc(a, b, orderBy)
     : (a, b) => -desc(a, b, orderBy);
-}
+};
 
 const rows = [
   {
-    id: "name",
+    id: "orderno",
     numeric: false,
     disablePadding: true,
-    label: "Dessert (100g serving)"
+    label: "Order No."
   },
-  { id: "calories", numeric: true, disablePadding: false, label: "Calories" },
-  { id: "fat", numeric: true, disablePadding: false, label: "Fat (g)" },
-  { id: "carbs", numeric: true, disablePadding: false, label: "Carbs (g)" },
-  { id: "protein", numeric: true, disablePadding: false, label: "Protein (g)" }
+  { id: "name", numeric: true, disablePadding: false, label: "Name" },
+  {
+    id: "orderdate",
+    numeric: true,
+    disablePadding: false,
+    label: "Order Date"
+  },
+  { id: "Products", numeric: true, disablePadding: false, label: "Products" },
+  { id: "Unit", numeric: true, disablePadding: false, label: "Unit" },
+  { id: "amount", numeric: true, disablePadding: false, label: "Amount" },
+  { id: "a", numeric: true, disablePadding: false, label: "A" },
+  { id: "b", numeric: true, disablePadding: false, label: "B" },
+  { id: "c", numeric: true, disablePadding: false, label: "C" }
 ];
 
 class EnhancedTableHead extends React.Component {
@@ -207,7 +239,7 @@ const styles = theme => ({
     [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
       marginTop: theme.spacing.unit * 10,
       marginBottom: theme.spacing.unit * 6,
-      padding: theme.spacing.unit * 3
+      padding: theme.spacing.unit * 0.5
     }
   },
   table: {
@@ -224,25 +256,31 @@ class EnhancedTable extends React.Component {
     orderBy: "calories",
     selected: [],
     data: [
-      createData("Cupcake", 305, 3.7, 67, 4.3),
-      createData("Donut", 452, 25.0, 51, 4.9),
-      createData("Eclair", 262, 16.0, 24, 6.0),
-      createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-      createData("Gingerbread", 356, 16.0, 49, 3.9),
-      createData("Honeycomb", 408, 3.2, 87, 6.5),
-      createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-      createData("Jelly Bean", 375, 0.0, 94, 0.0),
-      createData("KitKat", 518, 26.0, 65, 7.0),
-      createData("Lollipop", 392, 0.2, 98, 0.0),
-      createData("Marshmallow", 318, 0, 81, 2.0),
-      createData("Nougat", 360, 19.0, 9, 37.0),
-      createData("Oreo", 437, 18.0, 63, 4.0)
+      createData(
+        180822001,
+        "นางสาว ภีมรจรัษ ณควัชรภาณิชภูษิตนิกรโยธิน",
+        "18/22/2018 09.11",
+        67,
+        4.3
+      ),
+      createData(180822002, 452, 25.0, 51, 4.9),
+      createData(180822003, 262, 16.0, 24, 6.0),
+      createData(180822004, 159, 6.0, 24, 4.0),
+      createData(180822005, 356, 16.0, 49, 3.9),
+      createData(180822006, 408, 3.2, 87, 6.5),
+      createData(180822007, 237, 9.0, 37, 4.3),
+      createData(180822008, 375, 0.0, 94, 0.0),
+      createData(180822009, 518, 26.0, 65, 7.0),
+      createData(1808220010, 392, 0.2, 98, 0.0),
+      createData(1808220011, 318, 0, 81, 2.0),
+      createData(1808220012, 360, 19.0, 9, 37.0),
+      createData(1808220013, 437, 18.0, 63, 4.0)
     ],
     page: 0,
     rowsPerPage: 10
   };
 
-  handleRequestSort = (event, property) => {
+  handleRequestSort = property => {
     const orderBy = property;
     let order = "desc";
 
@@ -261,7 +299,7 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: [] });
   };
 
-  handleClick = (event, id) => {
+  handleClick = id => {
     const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
     let newSelected = [];
@@ -282,7 +320,7 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: newSelected });
   };
 
-  handleChangePage = (event, page) => {
+  handleChangePage = page => {
     this.setState({ page });
   };
 
@@ -330,12 +368,16 @@ class EnhancedTable extends React.Component {
                         <Checkbox checked={isSelected} />
                       </TableCell>
                       <TableCell component="th" scope="row" padding="none">
-                        {n.name}
+                        {n.orderno}
                       </TableCell>
-                      <TableCell numeric>{n.calories}</TableCell>
-                      <TableCell numeric>{n.fat}</TableCell>
-                      <TableCell numeric>{n.carbs}</TableCell>
-                      <TableCell numeric>{n.protein}</TableCell>
+                      <TableCell numeric>{n.name}</TableCell>
+                      <TableCell numeric>{n.orderdate}</TableCell>
+                      <TableCell numeric>{n.products}</TableCell>
+                      <TableCell numeric>{n.unit}</TableCell>
+                      <TableCell numeric>{n.amount}</TableCell>
+                      <TableCell numeric>{n.a}</TableCell>
+                      <TableCell numeric>{n.b}</TableCell>
+                      <TableCell numeric>{n.c}</TableCell>
                     </TableRow>
                   );
                 })}
