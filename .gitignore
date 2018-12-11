@@ -5,7 +5,7 @@
 
 # testing
 /coverage
-/src/ComponentsTest
+/src/ComponentsTest/*
 
 # production
 /build
